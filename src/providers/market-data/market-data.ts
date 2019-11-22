@@ -81,14 +81,19 @@ export class MarketDataProvider {
     }).join(',');
 
     return this.http.get(url + currenciesList).map((response) => {
-      const json = response['RAW'][this.marketTickerName] || response['RAW'][this.marketTickerName.toUpperCase()];
-      const tickerObject = {
-        symbol: json['BTC']['FROMSYMBOL'],
-        currencies: json,
-      };
+      // const json = response['RAW'][this.marketTickerName] || response['RAW'][this.marketTickerName.toUpperCase()];
+      // const tickerObject = {
+      //   symbol: json['BTC']['FROMSYMBOL'],
+      //   currencies: json,
+      // };
 
-      this.marketTicker = new model.MarketTicker().deserialize(tickerObject);
-      this.storageProvider.set(this.getKey(constants.STORAGE_MARKET_TICKER), tickerObject);
+      // this.marketTicker = new model.MarketTicker().deserialize(tickerObject);
+      // this.storageProvider.set(this.getKey(constants.STORAGE_MARKET_TICKER), tickerObject);
+
+      const iqdTicker = this.marketTicker.market.find(market => market.code === 'iqd');
+       if (iqdTicker) {
+        iqdTicker.price = 1000;
+       }
 
       return this.marketTicker;
     });

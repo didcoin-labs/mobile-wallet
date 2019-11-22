@@ -42,7 +42,7 @@
         </ion-slides>
       </ion-col>
     </ion-row>
-    <ion-row padding *ngIf="wallets?.length > 0" class="marketcap-container" appMarketNetOnly>
+    <ion-row padding *ngIf="wallets?.length > 0 && false" class="marketcap-container" appMarketNetOnly> <!-- hide marekt -->
       <ion-col>
         <hr>
         <h4 class="market-cap-title"><ion-icon name="md-trending-up"></ion-icon> {{ 'MARKETS_PAGE.MARKET_DATA' | translate }}</h4>

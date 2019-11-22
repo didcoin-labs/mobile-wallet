@@ -8,6 +8,11 @@ export interface Currency {
 
 export const CURRENCIES_LIST: Currency[] = [
   {
+    code: 'iqd',
+    name: 'Iraqi Dinar',
+    symbol: 'IQD',
+  },
+  {
     code: 'btc',
     name: 'Bitcoin',
     symbol: 'Ƀ',

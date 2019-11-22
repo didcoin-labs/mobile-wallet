@@ -11,7 +11,7 @@ export class UserSettings {
   public static defaults(lang: string): UserSettings {
     const settings = new UserSettings();
     settings.language = lang;
-    settings.currency = 'usd';
+    settings.currency = 'iqd';
     settings.wordlistLanguage = 'english';
     settings.darkMode = false;
     settings.notification = false;
