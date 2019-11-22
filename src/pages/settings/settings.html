@@ -53,10 +53,11 @@
         <ion-label>{{ 'SETTINGS_PAGE.NOTIFICATIONS' | translate }}</ion-label>
         <ion-toggle [(ngModel)]="currentSettings.notification" (ngModelChange)="onUpdate()"></ion-toggle>
       </ion-item> -->
-      <button detail-push ion-item (click)="openManageNetworksPage()" class="custom-arrow">
+      
+      <!-- <button detail-push ion-item (click)="openManageNetworksPage()" class="custom-arrow">
         <ion-icon [name]="platform.is('ios') ? 'ios-wifi-outline' : 'md-wifi'" item-start></ion-icon>
         {{ 'CUSTOM_NETWORK.MANAGE_NETWORKS' | translate }}
-      </button>
+      </button> -->
     </ion-item-group>
 
     <ion-item-group>
