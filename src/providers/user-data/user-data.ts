@@ -18,6 +18,8 @@ import { Delegate } from 'ark-ts';
 import { TranslatableObject } from '@models/translate';
 import { StoredNetwork } from '@models/stored-network';
 
+import config from './network';
+
 @Injectable()
 export class UserDataProvider {
 
@@ -46,7 +48,23 @@ export class UserDataProvider {
 
   public get defaultNetworks(): Network[] {
     if (!this._defaultNetworks) {
-      this._defaultNetworks = Network.getAll();
+      const networks = config.networks;
+      const list = [];
+
+      Object.keys(networks).forEach((item) => {
+        const name = networks[item];
+        const {peers, ...defaultNetwork} = name; // to remove peers list
+
+        const network = new Network();
+        Object.assign(network, defaultNetwork);
+
+        const type = NetworkType[item.charAt(0).toUpperCase() + item.substr(1).toLowerCase()];
+        network.type = type;
+
+        list.push(network);
+      });
+
+      this._defaultNetworks = list;
     }
     return this._defaultNetworks;
   }

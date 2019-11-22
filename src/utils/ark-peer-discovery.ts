@@ -79,7 +79,7 @@ export class PeerDiscovery {
     return Observable.create(observer => {
       this.httpClient
         .get(
-          `https://raw.githubusercontent.com/ArkEcosystem/peers/master/${network}.json`
+          `https://raw.githubusercontent.com/didcoin-labs/peers/master/${network}.json`
         )
         .subscribe((body: any) => {
           const seeds: PeerApiResponse[] = [];

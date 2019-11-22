@@ -18,7 +18,7 @@ import * as arkts from 'ark-ts';
 import lodash from 'lodash';
 import moment from 'moment';
 import * as constants from '@app/app.constants';
-import arktsConfig from 'ark-ts/config';
+import config from '../user-data/network';
 import { ArkUtility } from '../../utils/ark-utility';
 import { StoredNetwork, FeeStatistic } from '@models/stored-network';
 import ArkClient, { WalletResponse } from '../../utils/ark-client';
@@ -112,10 +112,10 @@ export class ArkApiProvider {
     // set default peer
     if (network.type !== null) {
       const activePeer = network.activePeer;
-      const apiNetwork = arkts.Network.getDefault(network.type);
-      if (apiNetwork) {
-        network = Object.assign<StoredNetwork, arkts.Network>(network, apiNetwork);
-      }
+      // const apiNetwork = arkts.Network.getDefault(network.type);
+      // if (apiNetwork) {
+      //   network = Object.assign<StoredNetwork, arkts.Network>(network, apiNetwork);
+      // }
       if (activePeer) {
         network.activePeer = activePeer;
       }
@@ -130,7 +130,7 @@ export class ArkApiProvider {
     this._peerDiscovery = new PeerDiscovery(this.httpClient);
 
     // Fallback if the fetchEpoch fail
-    this._network.epoch = arktsConfig.blockchain.date;
+    this._network.epoch = config.blockchain.date;
     // Fallback if the fetchNodeConfiguration fail
     this._network.activeDelegates = constants.NUM_ACTIVE_DELEGATES;
 
